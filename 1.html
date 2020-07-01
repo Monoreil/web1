@@ -73,41 +73,7 @@
         </section>
     </div>
     <script>
-        var test = {
-            programer: "lee",
-            designer: "kim",
-            user: "park",
-            frontend: "choi",
-            backend: "yim",
-            ch_color: function (color, backcolor) {
-                $('body').css('color', color).css('background-color', backcolor);
-            },
-            showAll: function () {
-                for (key in test) {
-                    console.log(key + " : " + test[key]);
-                }
-            }
-        }
-        test.betatester = "yu";
-        function t_proto() { }
-        t_proto.prototype.type = "squre";
-        t_proto.prototype.width = "300px";
-        t_proto.prototype.heigth = "300px";
-        t_proto.prototype.showType = function () {
-            for(i in t_proto.prototype){
-                $('#float-area').append("<span>"+i+" : "+t_proto.prototype[i]+"</span><br>");
-            }
-        }
-        function nd_proto() { }
-        nd_proto.prototype = new t_proto();
-        nd_proto.prototype.type = "circle";
-        nd_proto.prototype.showType2 = function () {
-            for(i in nd_proto.prototype){
-                $('#float-area').append("<span>"+i+" : "+nd_proto.prototype[i]+"</span><br>");
-            }
-        }
-
-
+      
     </script>
 </body>
 
