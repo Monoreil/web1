@@ -38,16 +38,16 @@ t_proto.prototype.type = "squre";
 t_proto.prototype.width = "300px";
 t_proto.prototype.heigth = "300px";
 t_proto.prototype.showType = function () {
-    for(i in t_proto.prototype){
-        $('#float-area').append("<span>"+i+" : "+t_proto.prototype[i]+"</span><br>");
+    for (i in t_proto.prototype) {
+        $('#float-area').append("<span>" + i + " : " + t_proto.prototype[i] + "</span><br>");
     }
 }
 function nd_proto() { }
 nd_proto.prototype = new t_proto();
 nd_proto.prototype.type = "circle";
 nd_proto.prototype.showType2 = function () {
-    for(i in nd_proto.prototype){
-        $('#float-area').append("<span>"+i+" : "+nd_proto.prototype[i]+"</span><br>");
+    for (i in nd_proto.prototype) {
+        $('#float-area').append("<span>" + i + " : " + nd_proto.prototype[i] + "</span><br>");
     }
 }
 

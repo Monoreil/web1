@@ -1,6 +1,7 @@
 body {
     margin: 0;
 }
+
 header {
     border-bottom: 1px solid #555;
     font-size: 30px;
@@ -27,15 +28,25 @@ section {
         display: block;
     }
 }
-a{
-    color:black;
+
+a {
+    color: black;
     text-decoration: none;
 }
-a li{
-    border-bottom:1px solid #555;
+
+a li {
+    border-bottom: 1px solid #555;
     text-align: center;
 }
-img{
-    border:1px solid #ccc;
+
+img {
+    border: 1px solid #ccc;
 }
 
+li:nth-of-type(2n) {
+    background-color: powderblue;
+}
+
+MARQUEE:nth-of-type(2n+1) {
+    background-color: powderblue;
+}
