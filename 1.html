@@ -4,11 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="test.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="guckbbong.js"></script>
 </head>
 
 <body>
     <header>
-        <h1>국뽕</h1>
+        <h1><a href="index.html">국뽕</a></h1>
     </header>
     <div id="container">
         <nav>
@@ -25,6 +27,7 @@
                 <a href="4.html">
                     <li>태극기</li>
                 </a>
+                
             </ol>
         </nav>
         <section>
@@ -55,8 +58,21 @@
                     대한 사람, 대한으로 길이 보전하세.
                 </li>
             </ol>
+            <div>
+                <input type="button" value="day" id="night_day_ch" onclick="ColorChange(this);">
+                <input type="text" id="ch-text" placeholder="Enter text-color">
+                <input type="button" value="change-text-color" onclick="TextChange();">
+            </div>
+            <br>
+            <div>
+                <input type="text" id="float-text" placeholder="Enter text">
+                <input type="button" value="float-text" onclick="FloatText();">
+                <input type="button" value="clear" onclick="$('#float-area').empty()">
+                <div id="float-area"></div>
+            </div>
         </section>
     </div>
+
 </body>
 
 </html>
