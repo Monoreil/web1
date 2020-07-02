@@ -16,7 +16,6 @@ function TextChange() {
 function FloatText() {
     $('#float-area').append("<MARQUEE>" + $('#float-text').val() + "</MARQUEE>")
 }
-
 var test = {
     programer: "lee",
     designer: "kim",
