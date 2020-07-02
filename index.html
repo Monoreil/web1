@@ -33,6 +33,11 @@
         <section>
             <h1>Welcome Homepage</h1>
             <br>
+
+            <div class="js-clock">
+                <h1></h1>
+            </div>
+
             <input type="button" value="day" id="night_day_ch" onclick="ColorChange(this);">
             <input type="text" id="ch-text" placeholder="Enter text-color">
             <input type="button" value="change-text-color" onclick="TextChange();">
@@ -43,6 +48,21 @@
             <div id="float-area"></div>
         </section>
     </div>
+    <script>
+        function clock() {
+            var date = new Date();
+            var hours = date.getHours();
+            var minutes = date.getMinutes();
+            var seconds = date.getSeconds();
+            $('.js-clock').text(hours+":"+minutes+":"+seconds);
+        }
+        function init() {
+            clock();
+            setInterval(clock, 1000);
+        }
+        init();
+
+    </script>
 </body>
 
 </html>
