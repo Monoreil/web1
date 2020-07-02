@@ -49,4 +49,19 @@ nd_proto.prototype.showType2 = function () {
         $('#float-area').append("<span>" + i + " : " + nd_proto.prototype[i] + "</span><br>");
     }
 }
+function clock() {
+    var date = new Date();
+    var hours = date.getHours();
+    var minutes = date.getMinutes();
+    var seconds = date.getSeconds();
+    hours=mod(hours,12);
+    $('.js-clock').text(hours+ ":" + minutes + ":" + seconds);
+}
+function init() {
+    clock();
+    setInterval(clock, 1000);
+}
+function mod(n, m) {
+    return ((n % m) + m) % m;
+  }
 
