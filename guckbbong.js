@@ -1,12 +1,12 @@
 function ColorChange(self) {
     if (self.value === "day") {
-        $('body').css('color', 'white').css('background-color', 'black');
-        $('nav,a').css('color', 'white').css('background-color', 'black');
+        $('body').css('color', 'white').css('background-color', '#020202');
+        $('nav,a').css('color', 'white').css('background-color', '#020202');
         $(self).val('night');
     }
     else {
-        $('body').css('color', 'black').css('background-color', 'white');
-        $('nav,a').css('color', 'black').css('background-color', 'white');
+        $('body').css('color', 'black').css('background-color', '#F4F5ED');
+        $('nav,a').css('color', 'black').css('background-color', '#F4F5ED');
         $(self).val('day');
     }
 }
