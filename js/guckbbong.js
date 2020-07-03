@@ -67,7 +67,7 @@ function init() {
 function mod(n, m) {
     return ((n % m) + m) % m;
 }
-$(function () {
+$(function movingBar() {
 
     var x;
     var y;
@@ -93,7 +93,7 @@ $(function () {
         }
         if (isoBarMoving) {
             isoBarMoving = false;
-            movingoBar(oContainer, x, e.pageX);
+            movingoBar(oContainer, y, e.pageY);
             y = 0;
         }
     });
