@@ -37,7 +37,13 @@
             </nav>
 
             <section>
-               
+                
+                <div>
+                    <div>게시글 목록</div>
+                    <ul id="float-area">
+                    </ul>
+                </div>
+
                 <input type="button" value="day" id="night_day_ch" onclick="ColorChange(this);">
                 <input type="text" id="ch-text" placeholder="Enter text-color">
                 <input type="button" value="change-text-color" onclick="TextChange();">
@@ -45,7 +51,6 @@
                 <input type="text" id="float-text" placeholder="Enter text">
                 <input type="button" value="float-text" onclick="FloatText();">
                 <input type="button" value="clear" onclick="$('#float-area').empty()">
-                <div id="float-area"></div>
             </section>
         </div>
     </div>
