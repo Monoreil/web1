@@ -55,7 +55,10 @@ function clock() {
     var minutes = date.getMinutes();
     var seconds = date.getSeconds();
     hours = mod(hours, 12);
-    $('.js-clock').text(hours + ":" + minutes + ":" + seconds);
+    $('.js-clock').text(zeroPlus(hours) + ":" + zeroPlus(minutes) + ":" + zeroPlus(seconds));
+}
+function zeroPlus(plus) {
+    return (plus < 10) ? "0" + plus : plus;
 }
 function init() {
     clock();
@@ -64,7 +67,7 @@ function init() {
 function mod(n, m) {
     return ((n % m) + m) % m;
 }
-$(function(){
+$(function () {
 
     var x;
     var y;
@@ -73,7 +76,7 @@ $(function(){
     var isoBarMoving = false;
     var vContainer = $('#container');
     var oContainer = $('#rowContainer');
-    
+
     $('#container nav div.verticleBar').mousedown(function (e) {
         isvBarMoving = true;
         x = e.pageX;
