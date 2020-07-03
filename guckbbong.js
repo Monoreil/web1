@@ -54,8 +54,8 @@ function clock() {
     var hours = date.getHours();
     var minutes = date.getMinutes();
     var seconds = date.getSeconds();
-    hours=mod(hours,12);
-    $('.js-clock').text(hours+ ":" + minutes + ":" + seconds);
+    hours = mod(hours, 12);
+    $('.js-clock').text(hours + ":" + minutes + ":" + seconds);
 }
 function init() {
     clock();
@@ -63,5 +63,61 @@ function init() {
 }
 function mod(n, m) {
     return ((n % m) + m) % m;
-  }
+}
+$(function(){
 
+    var x;
+    var y;
+    var MIN = 100;
+    var isvBarMoving = false;
+    var isoBarMoving = false;
+    var vContainer = $('#container');
+    var oContainer = $('#rowContainer');
+    
+    $('#container nav div.verticleBar').mousedown(function (e) {
+        isvBarMoving = true;
+        x = e.pageX;
+    });
+    $('#rowContainer header div.opticleBar').mousedown(function (e) {
+        isoBarMoving = true;
+        y = e.pageY;
+    });
+    $(document).mouseup(function (e) {
+        if (isvBarMoving) {
+            isvBarMoving = false;
+            movingvBar(vContainer, x, e.pageX);
+            x = 0;
+        }
+        if (isoBarMoving) {
+            isoBarMoving = false;
+            movingoBar(oContainer, x, e.pageX);
+            y = 0;
+        }
+    });
+    $(document).mousemove(function (e) {
+        if (isvBarMoving) {
+            movingvBar(vContainer, x, e.pageX);
+        }
+        if (isoBarMoving) {
+            movingoBar(oContainer, y, e.pageY);
+        }
+        x = e.pageX;
+        y = e.pageY;
+    })
+    function movingvBar(obj, bx, cx) {
+        var gx = obj.css('gridTemplateColumns').split(" ")[0].replace(/[^0-9]/g, "");
+        obj.css('gridTemplateColumns', pxControll(gx, bx, cx) + "px auto");
+    }
+    function movingoBar(obj, by, cy) {
+        var gy = obj.css('gridTemplateRows').split(" ")[0].replace(/[^0-9]/g, "");
+        obj.css('gridTemplateRows', pxControll(gy, by, cy) + "px auto");
+    }
+    function pxControll(g, b, c) {
+        var d = c - b;
+        var r = parseInt(g, 10) + d;
+        if (r < MIN) {
+            r = MIN;
+        }
+        return r;
+    }
+});
