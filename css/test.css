@@ -6,7 +6,7 @@ body,html{
 }
 @font-face{
     font-family: sandol;
-    src:url('./sandol-light.otf');
+    src:url('../font/sandol-light.otf');
 }
 header {
     border-bottom: 1px solid #555;
