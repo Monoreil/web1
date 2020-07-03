@@ -104,7 +104,7 @@ $(function movingBar() {
         }
         x = e.pageX;
         y = e.pageY;
-        $('#mouseCurser').css("top",y+20).css("left",x-15).text(x+"x "+y+"y");
+        $('#mouseCurser').css("top", y + 20).css("left", x - 15).text(x + "x " + y + "y");
     })
     function movingvBar(obj, bx, cx) {
         var gx = obj.css('gridTemplateColumns').split(" ")[0].replace(/[^0-9]/g, "");
@@ -123,4 +123,9 @@ $(function movingBar() {
         return r;
     }
 });
+function ShowHide() {
+    ($('#hide_show').val() == "show" ? $('nav').show() : $('nav').hide());
+    ($('#hide_show').val() == "hide" ? $('#hide_show').val('show') : $('#hide_show').val('hide'));
+}
+
 
