@@ -20,9 +20,8 @@ header {
     display: grid;
     grid-template-columns: 230px auto;
     height: 100%;
+    overflow: scroll;
 }
-
-
 section {
     padding-left: 10px;
     padding-right: 10px;
@@ -48,7 +47,7 @@ img {
     border: 1px solid #ccc;
 }
 
-li:nth-of-type(2n),MARQUEE:nth-of-type(2n+1) {
+section ol li:nth-of-type(2n),section MARQUEE:nth-of-type(2n+1) {
     background-color: powderblue;
 }
 .js-clock{
@@ -107,9 +106,10 @@ li:nth-of-type(2n),MARQUEE:nth-of-type(2n+1) {
     opacity: 0.8;
     cursor: ns-resize;
 }
-#container section div #float-area{
-    border:1px solid #777;
-    height: 300px;
-    padding-left: 0px;
-    overflow: scroll;
+#mouseCurser{
+    position: absolute;
+    top:0;
+    left: 0;
+    font-size: 10px;
+    background:greenyellow;
 }

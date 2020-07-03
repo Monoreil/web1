@@ -1,12 +1,10 @@
 function ColorChange(self) {
     if (self.value === "day") {
-        $('body').css('color', 'white').css('background-color', '#020202');
-        $('nav,a').css('color', 'white').css('background-color', '#020202');
+        $('body,nav,a,header').css('color', 'white').css('background-color', '#020202');
         $(self).val('night');
     }
     else {
-        $('body').css('color', 'black').css('background-color', '#F4F5ED');
-        $('nav,a').css('color', 'black').css('background-color', '#F4F5ED');
+        $('body,nav,a,header').css('color', 'black').css('background-color', '#F4F5ED');
         $(self).val('day');
     }
 }
@@ -106,6 +104,7 @@ $(function movingBar() {
         }
         x = e.pageX;
         y = e.pageY;
+        $('#mouseCurser').css("top",y+20).css("left",x-15).text(x+"x "+y+"y");
     })
     function movingvBar(obj, bx, cx) {
         var gx = obj.css('gridTemplateColumns').split(" ")[0].replace(/[^0-9]/g, "");
