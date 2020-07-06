@@ -13,7 +13,6 @@ export default function SplitWin(opt) {
     this.isMoving = false;
 
 }
-
 SplitWin.prototype.makeGrid = function () {
     var o = this.option;
     var _grid = document.createElement("div"),

@@ -127,7 +127,3 @@ function ShowHide() {
     ($('#hide_show').val() == "show" ? $('#float-area').show() : $('#float-area').hide());
     ($('#hide_show').val() == "hide" ? $('#hide_show').val('show') : $('#hide_show').val('hide'));
 }
-
-
-
-
