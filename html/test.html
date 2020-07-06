@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        #container {
+            display: grid;
+            grid-template-columns:300px auto;
+            height: 100%;
+            color: burlywood;
+        }
+
+        #f1 {
+            position: relative;
+            border-right: 1px solid #555;
+        }
+
+        .verticleBar {
+            background-color: blueviolet;
+            opacity: 0.2;
+            height: 100%;
+            width: 10px;
+            position: absolute;
+            top: 0;
+            right: 0;
+
+        }
+
+        .verticleBar:hover {
+            cursor: ew-resize;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div id="f1">first
+            <div class="verticleBar"></div>
+        </div>
+        <div id="f2">second</div>
+    </div>
+</body>
+<script>
+    var x;
+    var MIN = 100;
+    var isBarMoving = false;
+    var Container = document.getElementById('container');
+    var Bar = document.getElementsByClassName('verticleBar')[0];
+
+    Bar.addEventListener('mousedown', function (e) {
+        isBarMoving = true;
+        x = e.pageX;
+    })
+
+    document.addEventListener('mouseup', function (e) {
+        if (isBarMoving) {
+            isBarMoving = false;
+            movingvBar(Container, x, e.pageX);
+        }
+        x = 0;
+    })
+    document.addEventListener('mousemove', function (e) {
+        if (isBarMoving) {
+            x = e.pageX;
+            movingvBar(Container, x, e.pageX);
+        }
+    })
+    function movingvBar(obj, bx, cx) {
+        var gx = obj.style.gridTemplateColumns.split(" ").replace(/[^0-9]/g, "");
+        console.log(gx);
+        obj.style.gridTemplateColumns = pxControll(gx, bx, cx) + "px auto";
+    }
+    function pxControll(g, b, c) {
+        var d = c - b;
+        var r = parseInt(g, 10) + d;
+        if (r < MIN) {
+            r = MIN;
+        }
+        return r;
+    }
+</script>
+
+</html>
