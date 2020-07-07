@@ -38,8 +38,6 @@ SplitWin.prototype.makeGrid = function () {
     _bar.style.position = "absolute";
     _bar.style.backgroundColor = o.barColor;
     _bar.style.opacity = "0.2";
-    _bar.style.overflow = "hidden";
-
 
     if (o.direction === "vertical") {
         _bar.style.width = isNaN(o.barSize) ? o.barSize : o.barSize + "px";
