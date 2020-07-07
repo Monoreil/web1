@@ -28,20 +28,18 @@ SplitWin.prototype.makeGrid = function () {
 
     _grid.style.width = "100%";
     _grid.style.height = "100%";
-    // _grid.setAttribute("style","width:100%;height:100%");
 
     _w1.style.width = "100%";
     _w1.style.height = "100%";
-    // _w1.setAttribute("style","width:100%;height:100%");
 
     _w2.style.width = "100%";
     _w2.style.height = "100%";
-    // _w2.setAttribute("style","width:100%;height:100%");
 
     _bar.style.position = "absolute";
     _bar.style.backgroundColor = o.barColor;
     _bar.style.opacity = "0.2";
-   
+    _bar.style.overflow = "hidden";
+
 
     if (o.direction === "vertical") {
         _bar.style.width = isNaN(o.barSize) ? o.barSize : o.barSize + "px";
@@ -61,7 +59,7 @@ SplitWin.prototype.makeGrid = function () {
         _bar.addEventListener('mouseenter', function (e) {
             this.style.opacity = 0.8;
             this.style.cursor = "ns-resize";
-
+            
         });
     }
     _bar.addEventListener('mouseout', function (e) {
@@ -71,6 +69,7 @@ SplitWin.prototype.makeGrid = function () {
     _bar.addEventListener('mousedown', e => {
         this.pos = Direction(e.pageX, e.pageY);
         this.isMoving = true;
+        
     });
 
 
@@ -96,6 +95,7 @@ SplitWin.prototype.makeGrid = function () {
         _w1.style.userSelect = "";
 
     });
+
     function Direction(verticalVal, horizentalVal) {
         return (o.direction === "vertical") ? verticalVal : horizentalVal;
     }
@@ -130,17 +130,15 @@ SplitWin.prototype.makeGrid = function () {
 SplitWin.prototype.movingBar = function (obj, epos) {
     var o = this.option;
     var gpos, dpos, rpos;
-    gpos = (o.direction === "vertical")
-        ? window.getComputedStyle(obj).gridTemplateColumns.split(" ")[0].replace(/[^0-9.]/g, "")
-        : window.getComputedStyle(obj).gridTemplateRows.split(" ")[0].replace(/[^0-9.]/g, "");
-
+    gpos = (o.direction === "vertical") ?
+        window.getComputedStyle(obj).gridTemplateColumns.split(" ")[0].replace(/[^0-9.]/g, "") :
+        window.getComputedStyle(obj).gridTemplateRows.split(" ")[0].replace(/[^0-9.]/g, "");
 
     dpos = epos - this.pos;
     rpos = parseInt(gpos, 10) + dpos;
 
     var minSize = isNaN(o.minSize) ? o.minSize.replace(/[^0-9.]/g, "") : Number(o.minSize);
     rpos = (rpos < minSize) ? rpos = minSize : rpos;
-
 
     if (o.direction === "vertical") {
         obj.style.gridTemplateColumns = rpos + "px auto"
