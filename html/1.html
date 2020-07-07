@@ -10,13 +10,13 @@
 
 <body>
     <div id="rowContainer">
-        <header>
+        <header id="header">
             <h1><a href="../../index.html">국뽕</a></h1>
-            <div class="opticleBar"></div>
+            <!-- <div class="opticleBar"></div> -->
         </header>
 
         <div id="container">
-            <nav>
+            <nav id="nav">
                 <ol>
                     <a href="1.html">
                         <li>애국가</li>
@@ -37,9 +37,9 @@
                         <li>color code추출</li>
                     </a>
                 </ol>
-                <div class="verticleBar"></div>
+                <!-- <div class="verticleBar"></div> -->
             </nav>
-            <section>
+            <section id="section">
                 <h1>애국가</h1>
 
                 <ol>
@@ -83,5 +83,11 @@
             </section>
         </div>
     </div>
+    <script type="module">
+        import SplitWin from '../js/SplitWin.js'
+        new SplitWin({wid1:"#header",wid2:"#container",direction:"ho",barColor:"red",barSize:16}).makeGrid();
+        new SplitWin({wid1:"#nav",wid2:"#section"}).makeGrid();
+
+    </script>
 </body>
 </html>

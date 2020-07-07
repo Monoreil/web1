@@ -3,7 +3,7 @@ $(function colorFunc(){
     window.onload = function (){
         var context = document.getElementById('myCanvas').getContext('2d');
         var img = new Image();
-        img.src = '../img/color.jpg';
+        img.src = '../img/color.png';
         context.drawImage(img, 0, 0,400,400);
     };
 

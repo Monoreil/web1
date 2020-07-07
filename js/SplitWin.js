@@ -23,22 +23,25 @@ SplitWin.prototype.makeGrid = function () {
     _grid.appendChild(_w1);
     _grid.appendChild(_w2);
     _w1.appendChild(_bar);
-    _w1.style.position = "relative";
 
+    _w1.style.position = "relative";
 
     _grid.style.width = "100%";
     _grid.style.height = "100%";
+    // _grid.setAttribute("style","width:100%;height:100%");
 
     _w1.style.width = "100%";
     _w1.style.height = "100%";
+    // _w1.setAttribute("style","width:100%;height:100%");
 
     _w2.style.width = "100%";
     _w2.style.height = "100%";
+    // _w2.setAttribute("style","width:100%;height:100%");
 
     _bar.style.position = "absolute";
     _bar.style.backgroundColor = o.barColor;
     _bar.style.opacity = "0.2";
-
+   
 
     if (o.direction === "vertical") {
         _bar.style.width = isNaN(o.barSize) ? o.barSize : o.barSize + "px";
@@ -48,10 +51,8 @@ SplitWin.prototype.makeGrid = function () {
         _bar.addEventListener('mouseenter', function (e) {
             this.style.opacity = 0.8;
             this.style.cursor = "ew-resize";
-           
+
         });
-
-
     } else {
         _bar.style.height = isNaN(o.barSize) ? o.barSize : o.barSize + "px";
         _bar.style.width = "100%";
@@ -60,44 +61,44 @@ SplitWin.prototype.makeGrid = function () {
         _bar.addEventListener('mouseenter', function (e) {
             this.style.opacity = 0.8;
             this.style.cursor = "ns-resize";
-           
+
         });
     }
     _bar.addEventListener('mouseout', function (e) {
         this.style.opacity = 0.2;
         this.style.cursor = "";
     });
-    var _this = this;
-    _bar.addEventListener('mousedown', function (e) {
-        _this.pos = (o.direction === "vertical") ? e.pageX : e.pageY;
-        _this.isMoving = true;
+    _bar.addEventListener('mousedown', e => {
+        this.pos = Direction(e.pageX, e.pageY);
+        this.isMoving = true;
     });
 
 
     window.addEventListener('mousemove', e => {
         if (this.isMoving) {
-            var epos = (o.direction === "vertical") ? e.pageX : e.pageY;
+            var epos = Direction(e.pageX, e.pageY);
             this.movingBar(_grid, epos);
-            this.pos = (o.direction === "vertical") ? e.pageX : e.pageY;
-            _grid.style.cursor=(o.direction === "vertical") ? "ew-resize" : "ns-resize";
-            _bar.style.opacity=0.8;
-            _w1.style.userSelect="none";
+            this.pos = Direction(e.pageX, e.pageY);
+            _grid.style.cursor = Direction("ew-resize", "ns-resize");
+            _bar.style.opacity = 0.8;
+            _w1.style.userSelect = "none";
         }
-        
     });
-    window.addEventListener('mouseup',e=>{
-        if(this.isMoving){
-            var epos = (o.direction === "vertical") ? e.pageX : e.pageY;
-            this.movingBar(_grid,epos)
+    window.addEventListener('mouseup', e => {
+        if (this.isMoving) {
+            var epos = Direction(e.pageX, e.pageY);
+            this.movingBar(_grid, epos)
             this.pos = 0;
             this.isMoving = false;
         }
-        _grid.style.cursor="";
-        _bar.style.opacity=0.2;
-        _w1.style.userSelect="";
+        _grid.style.cursor = "";
+        _bar.style.opacity = 0.2;
+        _w1.style.userSelect = "";
 
     });
-
+    function Direction(verticalVal, horizentalVal) {
+        return (o.direction === "vertical") ? verticalVal : horizentalVal;
+    }
     var w1 = document.querySelector(o.wid1),
         w2 = document.querySelector(o.wid2);
 
@@ -130,24 +131,24 @@ SplitWin.prototype.movingBar = function (obj, epos) {
     var o = this.option;
     var gpos, dpos, rpos;
     gpos = (o.direction === "vertical")
-    ? window.getComputedStyle(obj).gridTemplateColumns.split(" ")[0].replace(/[^0-9.]/g, "")
-    : window.getComputedStyle(obj).gridTemplateRows.split(" ")[0].replace(/[^0-9.]/g, "");
-    
-   
+        ? window.getComputedStyle(obj).gridTemplateColumns.split(" ")[0].replace(/[^0-9.]/g, "")
+        : window.getComputedStyle(obj).gridTemplateRows.split(" ")[0].replace(/[^0-9.]/g, "");
+
+
     dpos = epos - this.pos;
     rpos = parseInt(gpos, 10) + dpos;
-    
+
     var minSize = isNaN(o.minSize) ? o.minSize.replace(/[^0-9.]/g, "") : Number(o.minSize);
     rpos = (rpos < minSize) ? rpos = minSize : rpos;
-  
+
 
     if (o.direction === "vertical") {
         obj.style.gridTemplateColumns = rpos + "px auto"
-     
-    } else{
+
+    } else {
         obj.style.gridTemplateRows = rpos + "px auto"
-      
+
     }
-    
-    
+
+
 }
