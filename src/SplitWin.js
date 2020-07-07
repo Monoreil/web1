@@ -15,25 +15,22 @@ export default function SplitWin(opt) {
 }
 SplitWin.prototype.makeGrid = function () {
     var o = this.option;
-    var _grid = document.createElement("div"),
-        _w1 = document.createElement("div"),
-        _w2 = document.createElement("div"),
-        _bar = document.createElement("div");
+    var _grid = makeForm("div"),
+        _w1 = makeForm("div"),
+        _w2 = makeForm("div"),
+        _bar = makeForm("div");
 
     _grid.appendChild(_w1);
     _grid.appendChild(_w2);
     _w1.appendChild(_bar);
 
+    fullSize(_grid);
+    fullSize(_w1);
+    fullSize(_w2);
+
     _w1.style.position = "relative";
-
-    _grid.style.width = "100%";
-    _grid.style.height = "100%";
-
-    _w1.style.width = "100%";
-    _w1.style.height = "100%";
-
-    _w2.style.width = "100%";
-    _w2.style.height = "100%";
+    _w1.style.whiteSpace = "nowrap";
+    _w1.style.overflow = "hidden";
 
     _bar.style.position = "absolute";
     _bar.style.backgroundColor = o.barColor;
@@ -57,7 +54,7 @@ SplitWin.prototype.makeGrid = function () {
         _bar.addEventListener('mouseenter', function (e) {
             this.style.opacity = 0.8;
             this.style.cursor = "ns-resize";
-            
+
         });
     }
     _bar.addEventListener('mouseout', function (e) {
@@ -67,9 +64,8 @@ SplitWin.prototype.makeGrid = function () {
     _bar.addEventListener('mousedown', e => {
         this.pos = Direction(e.pageX, e.pageY);
         this.isMoving = true;
-        
-    });
 
+    });
 
     window.addEventListener('mousemove', e => {
         if (this.isMoving) {
@@ -94,6 +90,15 @@ SplitWin.prototype.makeGrid = function () {
 
     });
 
+
+    function fullSize(obj) {
+        obj.style.width = "100%";
+        obj.style.height = "100%";
+        return obj;
+    }
+    function makeForm(form) {
+        return document.createElement(form);
+    }
     function Direction(verticalVal, horizentalVal) {
         return (o.direction === "vertical") ? verticalVal : horizentalVal;
     }
