@@ -11,7 +11,6 @@ export default function SplitWin(opt) {
     }, opt);
     this.pos = 0;
     this.isMoving = false;
-
 }
 SplitWin.prototype.makeGrid = function () {
     var o = this.option;
@@ -44,7 +43,6 @@ SplitWin.prototype.makeGrid = function () {
         _bar.addEventListener('mouseenter', function (e) {
             this.style.opacity = 0.8;
             this.style.cursor = "ew-resize";
-
         });
     } else {
         _bar.style.height = isNaN(o.barSize) ? o.barSize : o.barSize + "px";
@@ -54,8 +52,8 @@ SplitWin.prototype.makeGrid = function () {
         _bar.addEventListener('mouseenter', function (e) {
             this.style.opacity = 0.8;
             this.style.cursor = "ns-resize";
-
         });
+        
     }
     _bar.addEventListener('mouseout', function (e) {
         this.style.opacity = 0.2;

@@ -1,0 +1,20 @@
+body,
+        html {
+            margin: 0;
+            height: 100%;
+            
+        }
+        body{
+            background-color: #F4F5ED;
+        }
+        a{
+            color :black;
+            text-decoration: none;
+        }
+        #nav li{
+            border-bottom: 1px solid #555;
+        }
+        #section{
+            padding-left: 10px;
+            padding-right: 10px;
+        }

@@ -2,15 +2,26 @@ const path = require('path');
 
 module.exports = {
     mode: "development",
-    entry: "./src/index.js",
+    entry: {
+        index: "./src/index.js",
+        second: "./src/second.js"
+    },
     output: {
         path: path.resolve(__dirname, "dist"),
-        filename: "index_bundle.js"
+        filename: "[name]_bundle.js"
     },
     watch: true,
     devServer: {
         contentBase: path.join(__dirname, '.'),
         compress: true,
         port: 9000
+    },
+    module: {
+        rules: [
+            {
+                test: /\.css$/i,
+                use: ['style-loader', 'css-loader']
+            },
+        ],
     }
-}
+};
