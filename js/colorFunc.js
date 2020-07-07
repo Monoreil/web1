@@ -1,4 +1,4 @@
-$(function colorFunc(){
+ $(function colorFunc(){
         
     window.onload = function (){
         var context = document.getElementById('myCanvas').getContext('2d');

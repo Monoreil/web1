@@ -4,7 +4,8 @@ module.exports = {
     mode: "development",
     entry: {
         index: "./src/index.js",
-        second: "./src/second.js"
+        second: "./src/second.js",
+        color:"./src/colorFunc.js"
     },
     output: {
         path: path.resolve(__dirname, "dist"),
@@ -22,6 +23,6 @@ module.exports = {
                 test: /\.css$/i,
                 use: ['style-loader', 'css-loader']
             },
-        ],
-    }
+        ]
+      }
 };
