@@ -4,17 +4,16 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="../js/guckbbong.js"></script>
     <script src="../js/colorFunc.js"></script>
-    <link rel="stylesheet" href="../css/test.css">
+
 </head>
 
 <body>
     <div id="rowContainer">
-        <header>
+        <header id="header">
             <h1><a href="../index.html">국뽕</a></h1>
-            <div class="opticleBar"></div>
         </header>
         <div id="container">
-            <nav>
+            <nav id="nav">
                 <ol>
                     <a href="1.html">
                         <li>애국가</li>
@@ -35,9 +34,8 @@
                         <li>color code추출</li>
                     </a>
                 </ol>
-                <div class="verticleBar"></div>
             </nav>
-            <section>
+            <section id="section">
                 <h1>color code</h1>
                 <br>
                 <canvas id="myCanvas" width="400" height="400" style="border:1px solid #c3c3c3;">
@@ -57,6 +55,7 @@
             </section>
         </div>
     </div>
+    <script src="../dist/index_bundle.js"></script>
 </body>
 
 </html>

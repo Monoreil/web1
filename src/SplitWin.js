@@ -62,7 +62,6 @@ SplitWin.prototype.makeGrid = function () {
     _bar.addEventListener('mousedown', e => {
         this.pos = Direction(e.pageX, e.pageY);
         this.isMoving = true;
-
     });
 
     window.addEventListener('mousemove', e => {
