@@ -4,7 +4,8 @@ module.exports = {
     mode: "development",
     entry: {
         index: "./src/index.js",
-        second: "./src/second.js"
+        second: "./src/second.js",
+        third:"./src/third.js"
     },
     output: {
         path: path.resolve(__dirname, "dist"),
