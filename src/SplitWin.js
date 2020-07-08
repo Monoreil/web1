@@ -139,7 +139,8 @@ SplitWin.prototype.movingBar = function (obj, epos) {
 
     var minSize = isNaN(o.minSize) ? o.minSize.replace(/[^0-9.]/g, "") : Number(o.minSize);
     rpos = (rpos < minSize) ? rpos = minSize : rpos;
-
+    
+    
     if (o.direction === "vertical") {
         obj.style.gridTemplateColumns = rpos + "px auto"
 
